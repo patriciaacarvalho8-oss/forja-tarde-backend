@@ -38,15 +38,15 @@ export default {
     },
 
     create: async (request: Request, response: Response) => {
-        try{
-            const { matricula, cpf, nome, nascimento, email, telefone, endereco} = request.body; 
+        try {
+            const { matricula, cpf, nome, nascimento, email, telefone, endereco } = request.body;
 
-            if(!matricula || !cpf || !nome || !email){
+            if (!matricula || !cpf || !nome || !email) {
                 return response.status(400).json("Dados do aluno incompletos");
             }
 
             const aluno = await prisma.aluno.create({
-                data:{
+                data: {
                     matricula,
                     cpf,
                     nome,
@@ -57,18 +57,18 @@ export default {
                 },
             });
             return response.status(201).json(aluno);
-        }catch (e) {
+        } catch (e) {
             return handleErrors(e, response);
         }
     },
 
     update: async (request: Request, response: Response) => {
-        try{
+        try {
             const { id } = request.params;
-            const { matricula, cpf, nome, nascimento, email, telefone, endereco} =
-            request.body;
+            const { matricula, cpf, nome, nascimento, email, telefone, endereco } =
+                request.body;
 
-             const aluno = await prisma.aluno.update({
+            const aluno = await prisma.aluno.update({
                 where: {
                     id: +id,
                 },
@@ -81,11 +81,27 @@ export default {
                     telefone,
                     endereco,
                 }
-             });
+            });
 
-             return response.status(200).json(aluno);
-        } catch (e){
+            return response.status(200).json(aluno);
+        } catch (e) {
             return handleErrors(e, response);
         }
-    }
+    },
+
+    delete: async (request: Request, response: Response) => {
+        try {
+            const { id } = request.params;
+
+            const aluno = await prisma.aluno.delete({
+                where: {
+                    id: +id,
+                },
+            });
+
+            return response.status(200).json(aluno);
+        } catch (e) {
+            return handleErrors(e, response);
+        }
+    },
 };
