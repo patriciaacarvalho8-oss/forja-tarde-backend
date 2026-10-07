@@ -26,7 +26,11 @@ routes.post("/cursos", cursoController.create);
 routes.put("/cursos/:id", cursoController.update);
 routes.delete("/cursos/:id", cursoController.delete);
 
-routes.post("/matriculas/: id", matriculasController.create);
-routes.delete("/matriculas/: id", matriculasController.delete);
+// Rotas de matriculas 
+routes.post("/matriculas/:id", matriculasController.create);
+routes.delete("/matriculas/:id", matriculasController.delete);
+
+// Rotas de funcionarios
+routes.post("/login" )
 
 export default routes;
