@@ -1,7 +1,8 @@
 import { Router } from 'express';
-import alunoController from "./controllers/aluno";
 import cursoController from "./controllers/cursos";
 import matriculasController from './controllers/matriculas';
+import funcionarioController from './controllers/funcionario';
+import alunoController from "./controllers/aluno";
 
 
 // Inicializa o router
@@ -31,6 +32,6 @@ routes.post("/matriculas/:id", matriculasController.create);
 routes.delete("/matriculas/:id", matriculasController.delete);
 
 // Rotas de funcionarios
-routes.post("/login" )
+routes.post("/login", funcionarioController.login);
 
 export default routes;
