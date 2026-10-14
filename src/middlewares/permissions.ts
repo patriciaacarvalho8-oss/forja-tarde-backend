@@ -1,10 +1,10 @@
-import { Request, Response, NextFunction, response } from "express";
+import { Request, Response, NextFunction } from "express";
 
 export function isAdmin(
     request: Request,
-    Response: Response,
+    response: Response,
     next: NextFunction,
-) {
+) { console.log(request.body)
     if (request.body.user.cargo === "ADMIN") {
         next();
     } else {
@@ -14,7 +14,7 @@ export function isAdmin(
 
 export function isAdminOrHimself(
     request: Request,
-    Response: Response,
+    response: Response,
     next: NextFunction,
 ) {
     if (request.body.user.cargo === "ADMIN" ||
