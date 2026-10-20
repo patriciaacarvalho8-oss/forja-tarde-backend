@@ -16,10 +16,10 @@ model Aluno {
   matricula    String @unique
   cpf          String @unique
   nome         String
-  nascimento   DateTime
+  nascimento   DateTime?
   email        String  @unique
-  telefone     Int 
-  endereco     String
+  telefone     Int ?
+  endereco     String?
   cursos       Curso[]
 }
 
@@ -36,10 +36,10 @@ model Funcionario{
   nome         String
   email        String  @unique
   cargo        String 
-  nascimento   DateTime
+  nascimento   DateTime?
   cpf          String @unique
   senha        String
-  telefone     Int 
-  endereco     String
+  telefone     Int?
+  endereco     String?
 }
 
