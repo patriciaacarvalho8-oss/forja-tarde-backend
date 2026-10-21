@@ -5,7 +5,7 @@ export function isAdmin(
     response: Response,
     next: NextFunction,
 ) { console.log(request.body)
-    if (request.body.user.cargo === "ADMIN") {
+    if (request.body.user.cargo === "admin") {
         next();
     } else {
         return response.status(403).json("Acesso negado");
@@ -17,7 +17,7 @@ export function isAdminOrHimself(
     response: Response,
     next: NextFunction,
 ) {
-    if (request.body.user.cargo === "ADMIN" ||
+    if (request.body.user.cargo === "admin" ||
         request.body.user.id === +request.params.id
     ) {
       next();
